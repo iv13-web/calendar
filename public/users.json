@@ -1,0 +1,17 @@
+[
+  {
+    "email": "a@a.com",
+    "password": "1111",
+    "name": "Ivan Petrov"
+  },
+  {
+    "email": "a@b.com",
+    "password": "1111",
+    "name": "Sergey Smirnov"
+  },
+  {
+    "email": "a@c.com",
+    "password": "1111",
+    "name": "Alexey Danilov"
+  }
+]
