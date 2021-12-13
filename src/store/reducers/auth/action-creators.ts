@@ -7,7 +7,7 @@ import {
 } from './types'
 import {User} from 'models/User'
 import {AppDispatch} from '../../index'
-import axios from 'axios'
+import {UserService} from 'api/UserService'
 
 export const AuthActionCreators = {
 	setUser: (user: User): SetUserAction => ({type: AuthActionsEnum.SET_USER, payload: user}),
@@ -18,7 +18,7 @@ export const AuthActionCreators = {
 		try {
 			dispatch(AuthActionCreators.setIsLoading(true))
 			setTimeout(async () => {
-				const response = await axios.get<User[]>('./users.json')
+				const response = await UserService.getUsers()
 				const user = response.data.find((user) => user.email === email && user.password === password)
 				if (user) {
 					localStorage.setItem('auth', JSON.stringify({auth: true, email}))
