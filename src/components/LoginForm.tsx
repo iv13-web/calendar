@@ -1,5 +1,5 @@
 import {Button, Card, Form, Input} from 'antd'
-import {formRules} from '../utils/formRules'
+import {rules} from '../utils/rules'
 import {useAppSelector} from '../hooks/useAppSelector'
 import {useActions} from '../hooks/useActions'
 
@@ -33,7 +33,7 @@ export const LoginForm = () => {
 				<Form.Item
 					label='Email'
 					name='email'
-					rules={[formRules.required('Enter your email')]}
+					rules={[rules.required('Enter your email')]}
 				>
 					<Input/>
 				</Form.Item>
@@ -41,7 +41,7 @@ export const LoginForm = () => {
 				<Form.Item
 					label='Password'
 					name='password'
-					rules={[formRules.required('Enter your password')]}
+					rules={[rules.required('Enter your password')]}
 				>
 					<Input.Password/>
 				</Form.Item>

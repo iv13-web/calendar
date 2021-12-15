@@ -22,8 +22,8 @@ export const AuthActionCreators = {
 				const user = response.data.find((user) => user.email === email && user.password === password)
 				if (user) {
 					localStorage.setItem('auth', JSON.stringify({auth: true, email}))
-					dispatch(AuthActionCreators.setIsAuth(true))
 					dispatch(AuthActionCreators.setUser(user))
+					dispatch(AuthActionCreators.setIsAuth(true))
 				} else {
 					dispatch(AuthActionCreators.setError('Invalid email or password'))
 				}

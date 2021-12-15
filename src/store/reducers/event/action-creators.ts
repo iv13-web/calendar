@@ -14,5 +14,28 @@ export const EventActionCreators = {
 		} catch (e) {
 			console.log(e)
 		}
-	}
+	},
+	createEvent: (calendarEvent: Event) => async (dispatch: AppDispatch) => {
+		try {
+			const events = localStorage.getItem('events') || '[]'
+			const arr = JSON.parse(events) as Event[]
+			arr.push(calendarEvent)
+			dispatch(EventActionCreators.setEvents(arr))
+			localStorage.setItem('events', JSON.stringify(arr))
+		} catch (e) {
+			console.log(e)
+		}
+	},
+	fetchEvents: (username: string) => async (dispatch: AppDispatch) => {
+		try {
+			const events = localStorage.getItem('events') || '[]'
+			const arr = JSON.parse(events) as Event[]
+			const currentUserEvents = arr.filter(calendarEvent => {
+				return calendarEvent.creator === username || calendarEvent.guest === username
+			})
+			dispatch(EventActionCreators.setEvents(currentUserEvents))
+		} catch (e) {
+
+		}
+	},
 }
